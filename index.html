@@ -1,12 +1,15 @@
-<form action="https://github.com/settings/apps/new?state=abc123" method="post">
+<form action="https://github.com/settings/apps/new?state=not_needed_here" method="post">
  Create a GitHub App Manifest: <textarea type="text" name="manifest" id="manifest" cols="200" rows="15"></textarea><br>
  <input type="submit" value="Submit">
 </form>
 
 <script>
  input = document.getElementById("manifest")
+ 
+ url = new URL(window.location.href);
+ 
  input.value = JSON.stringify({
-   "name": "Octoapp",
+   "name": url.searchParams.get("app"),
    "url": "https://www.example.com",
    "default_permissions": {
      "administration": "read"
