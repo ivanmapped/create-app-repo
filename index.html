@@ -1,12 +1,15 @@
-<form action="https://github.com/settings/apps/new?state=not_needed_here" method="post">
+<form id="form1" action="https://github.com/settings/apps/new?state=not_needed_here" method="post">
  Create a GitHub App Manifest: <textarea type="text" name="manifest" id="manifest" cols="200" rows="15"></textarea><br>
  <input type="submit" value="Submit">
 </form>
 
 <script>
  input = document.getElementById("manifest")
+ form1 = document.getElementById("form1")
  
  url = new URL(window.location.href);
+ 
+ form1.action = "https://github.com/organizations/" + url.searchParams.get("org") + "/settings/apps/new?state=not_needed_here"
  
  input.value = JSON.stringify({
    "name": url.searchParams.get("app"),
